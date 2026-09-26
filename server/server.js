@@ -10,18 +10,16 @@ if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
 
 const PORT = process.env.PORT || 5000;
 
-const startServer = async () => {
-  try {
-    await connectDB();
-  } catch (err) {
-    console.warn('⚠️  Continuing server launch. Database operations will reconnect once Atlas is accessible.');
-  }
+// Start HTTP server immediately
+const server = app.listen(PORT, () => {
+  console.log(`🚀 LostLink Server running on http://localhost:${PORT}`);
+  console.log(`📦 Environment: ${process.env.NODE_ENV || 'development'}`);
+});
 
-  app.listen(PORT, () => {
-    console.log(`🚀 LostLink Server running on http://localhost:${PORT}`);
-    console.log(`📦 Environment: ${process.env.NODE_ENV || 'development'}`);
-  });
-};
+// Connect to Database
+connectDB().catch((err) => {
+  console.warn('⚠️  Database initial connection pending: ' + err.message);
+  console.log('ℹ️  Ensure your IP is whitelisted in MongoDB Atlas (Network Access -> Allow 0.0.0.0/0).');
+});
 
-startServer();
 
