@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    @apply bg-surface text-white font-sans antialiased;
+    background: #0a0a0f;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #12121a; }
+  ::-webkit-scrollbar-thumb { background: #2a2a40; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+}
+
+@layer components {
+  /* Cards */
+  .card {
+    @apply bg-surface-card border border-surface-border rounded-2xl;
+  }
+  .card-elevated {
+    @apply bg-surface-elevated border border-surface-border rounded-2xl;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer select-none disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-primary-600 hover:bg-primary-700 text-white shadow-lg shadow-primary-900/30 hover:shadow-primary-900/50 active:scale-95;
+  }
+  .btn-secondary {
+    @apply btn bg-surface-elevated hover:bg-surface-border text-white border border-surface-border;
+  }
+  .btn-danger {
+    @apply btn bg-rose-600 hover:bg-rose-700 text-white;
+  }
+  .btn-ghost {
+    @apply btn text-surface-muted hover:text-white hover:bg-surface-elevated;
+  }
+  .btn-accent {
+    @apply btn bg-accent hover:bg-accent-dark text-white shadow-lg shadow-emerald-900/30;
+  }
+  .btn-lg {
+    @apply px-6 py-3 text-base rounded-xl;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs rounded-lg;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full bg-surface-elevated border border-surface-border rounded-xl px-4 py-3 text-white placeholder-surface-muted text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200;
+  }
+  .input-label {
+    @apply block text-sm font-medium text-gray-300 mb-1.5;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  .badge-active { @apply badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/20; }
+  .badge-match { @apply badge bg-amber-500/10 text-amber-400 border border-amber-500/20; }
+  .badge-request { @apply badge bg-violet-500/10 text-violet-400 border border-violet-500/20; }
+  .badge-recovered { @apply badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/20; }
+  .badge-closed { @apply badge bg-gray-500/10 text-gray-400 border border-gray-500/20; }
+  .badge-rejected { @apply badge bg-rose-500/10 text-rose-400 border border-rose-500/20; }
+  .badge-available { @apply badge bg-teal-500/10 text-teal-400 border border-teal-500/20; }
+  .badge-returned { @apply badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/20; }
+  .badge-pending { @apply badge bg-amber-500/10 text-amber-400 border border-amber-500/20; }
+  .badge-accepted { @apply badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/20; }
+  .badge-disputed { @apply badge bg-rose-500/10 text-rose-400 border border-rose-500/20; }
+
+  /* Score bars */
+  .score-high { @apply bg-gradient-to-r from-emerald-500 to-teal-400; }
+  .score-mid { @apply bg-gradient-to-r from-amber-500 to-orange-400; }
+  .score-low { @apply bg-gradient-to-r from-rose-500 to-pink-400; }
+
+  /* Skeleton */
+  .skeleton {
+    @apply bg-surface-elevated rounded-lg animate-pulse;
+    background: linear-gradient(90deg, #1a1a28 25%, #2a2a40 50%, #1a1a28 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Glow effects */
+  .glow-primary { box-shadow: 0 0 30px rgba(124, 58, 237, 0.3); }
+  .glow-accent { box-shadow: 0 0 30px rgba(16, 185, 129, 0.3); }
+
+  /* Gradient border */
+  .gradient-border {
+    background: linear-gradient(#12121a, #12121a) padding-box,
+                linear-gradient(135deg, #7c3aed, #10b981) border-box;
+    border: 1px solid transparent;
+  }
+
+  /* Page wrapper */
+  .page-container { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section-title { @apply text-2xl font-bold text-white; }
+  .section-subtitle { @apply text-surface-muted text-sm mt-1; }
+}
